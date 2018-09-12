@@ -7,3 +7,7 @@ quadsol2 a b c = (-b + sqrt (det a b c))/2*a
 third_a list = list !! 2
 
 third_b (_:_:x:xs) = x
+
+hailstone n
+  | even n    = n `div` 2
+  | otherwise = 3*n+1
