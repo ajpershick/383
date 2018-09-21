@@ -25,5 +25,4 @@ join sep (x:xs) = x ++ sep ++ join sep xs
 -- Part 4: Pythagorean Triples
 
 pythagorean :: Int -> [(Int, Int, Int)]
-pythagorean 0..4 = 0
-pythagorean x = 
+pythagorean x = [(a,b,c) | c <- [1..x], b <- [1..c], a <- [1..c], a^2 + b^2 == c^2, a<b ]
