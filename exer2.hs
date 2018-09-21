@@ -9,6 +9,7 @@ hailstone n
   | otherwise = 3*n+1
 
 -- Part 2: Divisors and Primes
+
 divisors :: Int -> [Int]
 divisors n = [i | i <- [2..(n `div` 2)], n `mod` i == 0]
 
@@ -17,4 +18,12 @@ primes n = [i | i <- [2..n], divisors i == []]
 
 -- Part 3: Joining Strings
 
-join sep list(x:xs) = x
+join sep [] = ""
+join sep [x] = x
+join sep (x:xs) = x ++ sep ++ join sep xs
+
+-- Part 4: Pythagorean Triples
+
+pythagorean :: Int -> [(Int, Int, Int)]
+pythagorean 0..4 = 0
+pythagorean x = 
