@@ -16,3 +16,5 @@ primes :: Int -> [Int]
 primes n = [i | i <- [2..n], divisors i == []]
 
 -- Part 3: Joining Strings
+
+join sep list(x:xs) = x
