@@ -24,3 +24,6 @@ join sep (x:xs) = x ++ sep ++ join sep xs
 
 -- Part 4: Pythagorean Triples
 
+pythagorean :: Int -> [(Int, Int, Int)]
+pythagorean 0..4 = 0
+pythagorean x = 
