@@ -1,3 +1,6 @@
+import Data.Time.Calendar
+import Data.Time.Calendar.OrdinalDate
+
 -- Merge 
 merge x [] = x
 merge [] y = y
@@ -22,3 +25,14 @@ fact x = x * fact (x-1)
 
 -- Using foldl
 fact' x = foldl (*) 1 [1..x]
+
+-- Haskell Library and Dates
+daysInYear :: Integer -> [Day]
+daysInYear y = [jan1..dec31]
+  where jan1 = fromGregorian y 1 1
+        dec31 = fromGregorian y 12 365
+
+isFriday day 
+    | snd (mondayStartWeek day) == 5 = True
+    | otherwise = False
+
