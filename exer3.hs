@@ -20,12 +20,6 @@ hailstone n
     | even n    = n `div` 2
     | otherwise = 3*n+1
 
-hailTail a 1 = a
-hailTail a n = hailTail (a+1) (n `div` 2) 
-
-stupidAdder x 0 = x
-stupidAdder x y = stupidAdder (x+1) (y-1)
-
 -- Factorial recursively
 fact :: Int -> Int
 fact 0 = 1
