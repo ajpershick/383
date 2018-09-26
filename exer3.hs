@@ -35,9 +35,22 @@ daysInYear y = [jan1..dec31]
   where jan1 = fromGregorian y 1 1
         dec31 = fromGregorian y 12 31
 
+-- isFriday function
 isFriday :: Day -> Bool        
 isFriday day 
     | snd (mondayStartWeek day) == 5 = True
     | otherwise = False
+
+-- isPrimeDay function
+isPrimeDay :: Day -> Bool
+isPrimeDay day
+    | divisors(getDay(toGregorian day)) == [] = True
+    | otherwise = False
+
+-- Helper functions for isPrimeDay
+getDay (y,m,d) = d
+
+divisors :: Int -> [Int]
+divisors n = [i | i <- [2..(n `div` 2)], n `mod` i == 0]
 
 
