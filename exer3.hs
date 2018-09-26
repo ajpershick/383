@@ -10,10 +10,18 @@ merge (xi:xf) (yi:yf)
     | xi > yi = yi : merge (xi:xf) yf
 
 -- Tail Recursive Hailstone
-hailLen n = hailTail a n
+hailLen :: Int -> Int
+hailLen n = hailTail 0 n
     where
         hailTail a 1 = a
-        hailTail a n = hailTail (3n + 1) (n `div` 2)
+        hailTail a n = hailTail (a+1) (hailstone n)
+
+hailstone n
+    | even n    = n `div` 2
+    | otherwise = 3*n+1
+
+hailTail a 1 = a
+hailTail a n = hailTail (a+1) (n `div` 2) 
 
 stupidAdder x 0 = x
 stupidAdder x y = stupidAdder (x+1) (y-1)
