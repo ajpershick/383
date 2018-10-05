@@ -30,4 +30,10 @@ merge (xi:xf) (yi:yf)
     | xi <= yi = xi : merge xf (yi:yf)
     | xi > yi = yi : merge (xi:xf) yf
 
-mergeSort list = 
+mergeSort :: [Int] -> [Int]
+mergeSort [] = []
+mergeSort [x] = [x]
+mergeSort list = merge (mergeSort left) (mergeSort right)
+    where 
+        left = take (length list `div` 2)
+        right = drop (length list `div` 2)
