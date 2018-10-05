@@ -9,7 +9,10 @@ hailSeq n = hailTail [] n
         hailTail list 1 = list ++ [1]
         hailTail list n = hailTail (list ++ [n]) (hailstone n)
 
-
 -- Iterative Hailstone Generator
 hailSeq' :: Int -> [Int]
 hailSeq' n = takeWhile(\x -> x /= 1) (iterate hailstone n) ++ [1]
+
+-- Joining Strings with fold
+-- join :: String -> [String] -> String
+join sep list = foldl1 (++) (foldl (++) sep list)
