@@ -39,4 +39,12 @@ mergeSort list = merge (mergeSort left) (mergeSort right)
         right = drop split list
         split = length list `div` 2
 
-
+-- Maybe
+maybeToList :: Maybe a -> [a]
+maybeToList Nothing  = []
+maybeToList (Just x) = [x]
+-- findElt :: a -> Maybe a
+findElt x list = do 
+   case x of
+    Nothing -> x:list
+    Just x -> list
