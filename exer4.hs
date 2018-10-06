@@ -23,17 +23,20 @@ join sep list = foldl1 (++) (map (\x -> x ++ sep) (init list)) ++ (last list)
 
 
 -- Merge Sort
-merge :: [Int] -> [Int] -> [Int]
+merge :: Ord a => [a] -> [a] -> [a]
 merge x [] = x
 merge [] y = y
 merge (xi:xf) (yi:yf) 
     | xi <= yi = xi : merge xf (yi:yf)
     | xi > yi = yi : merge (xi:xf) yf
 
-mergeSort :: [Int] -> [Int]
+mergeSort :: Ord a => [a] -> [a]
 mergeSort [] = []
 mergeSort [x] = [x]
 mergeSort list = merge (mergeSort left) (mergeSort right)
     where 
-        left = take (length list `div` 2)
-        right = drop (length list `div` 2)
+        left = take split list
+        right = drop split list
+        split = length list `div` 2
+
+
