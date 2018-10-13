@@ -1,0 +1,14 @@
+#### Fibonacci Speed ####
+
+I think it could be because of Haskell's "lazy evaluation". 
+Possibly, it doesn't save the values and will have to calculate the previous 
+values each recursive call. 
+
+
+#### Something else ####
+
+1) The values of the things list are: the Fibonacci sequence
+
+2) The values in things are calculated lazily by waiting until absolutely necessary to execute the addition.
+
+3) This is much faster than my fib function because it doesn't recalculate the previous number each iteration.
