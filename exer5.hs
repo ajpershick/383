@@ -9,6 +9,6 @@ myTakeWhile cond list
     | otherwise = myTakeWhile cond (drop 1 list)
 
 -- Pascal's Triangle
-
-
-pascal prev = map $ uncurry (+) (zip prev (tail prev))
+pascal 0 = [1]
+pascal 1 = [1,1]
+pascal n =  map (uncurry (+)) (zip [1,2,1] (tail [1,2,1]))
