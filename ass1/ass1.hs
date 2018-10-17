@@ -9,7 +9,7 @@ width = 40              -- length of each chain in the table
 height = 1000           -- number of "rows" in the table
 filename = "table.txt"  -- filename to store the table
 
-listOfDivisions x = take pwLength (reverse (iterate (`div` nLetters) x))
+pwReduce x = map (toLetter) $ reverse $ map ( `mod` nLetters ) $ take pwLength ( iterate ( `div` nLetters ) x )
 
 -- listOfMods :: [Int] -> [Int]
 -- listOfMods x = map reverse x
