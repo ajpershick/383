@@ -13,7 +13,8 @@ pwReduce :: Hash -> Passwd
 pwReduce x = map toLetter $ reverse $ map ( `mod` nLetters ) $ take pwLength $ iterate ( `div` nLetters ) $ fromEnum x 
 
 -- rainbowTable :: Int -> [Passwd] -> Map.Map Hash Passwd
--- rainbowTable width passwords = 
+rainbowTable width passwords = map pwHash passwords
+
 
 -- listOfMods :: [Int] -> [Int]
 -- listOfMods x = map reverse x
