@@ -9,15 +9,17 @@ width = 40              -- length of each chain in the table
 height = 1000           -- number of "rows" in the table
 filename = "table.txt"  -- filename to store the table
 
+-- Reducing the Hash Values to Passwords
 pwReduce :: Hash -> Passwd
 pwReduce x = map toLetter $ reverse $ map ( `mod` nLetters ) $ take pwLength $ iterate ( `div` nLetters ) $ fromEnum x 
 
--- rainbowTable :: Int -> [Passwd] -> Map.Map Hash Passwd
-rainbowTable width passwords = map pwHash passwords
+-- Building the Rainbow Table
+rainbowTable :: Int -> [Passwd] -> Map.Map Hash Passwd
+generateHashList passwords = iterate (map pwHash . map pwReduce) $ map pwHash passwords 
+getHashRow width passwords =  take (width + 1) (generateHashList passwords) !!width
+rainbowTable width passwords = Map.fromList $ zip (getHashRow width passwords) passwords
 
 
--- listOfMods :: [Int] -> [Int]
--- listOfMods x = map reverse x
 
 
 
