@@ -1,5 +1,5 @@
 import RainbowAssign
-
+import qualified Data.Map as Map
 
 pwLength, nLetters, width, height :: Int
 filename :: FilePath
@@ -9,7 +9,11 @@ width = 40              -- length of each chain in the table
 height = 1000           -- number of "rows" in the table
 filename = "table.txt"  -- filename to store the table
 
-pwReduce x = map (toLetter) $ reverse $ map ( `mod` nLetters ) $ take pwLength ( iterate ( `div` nLetters ) x )
+pwReduce :: Hash -> Passwd
+pwReduce x = map toLetter $ reverse $ map ( `mod` nLetters ) $ take pwLength $ iterate ( `div` nLetters ) $ fromEnum x 
+
+-- rainbowTable :: Int -> [Passwd] -> Map.Map Hash Passwd
+-- rainbowTable width passwords = 
 
 -- listOfMods :: [Int] -> [Int]
 -- listOfMods x = map reverse x
