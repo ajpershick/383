@@ -1,5 +1,6 @@
 import RainbowAssign
 import qualified Data.Map as Map
+import Data.List
 
 pwLength, nLetters, width, height :: Int
 filename :: FilePath
@@ -19,23 +20,18 @@ generateHashList passwords = iterate (map pwHash . map pwReduce) $ map pwHash pa
 getHashRow width passwords =  take (width + 1) (generateHashList passwords) !!width
 rainbowTable width passwords = Map.fromList $ zip (getHashRow width passwords) passwords
 
+-- Writing table to text file
+generateTable :: IO ()
+generateTable = do
+  table <- buildTable rainbowTable nLetters pwLength width height
+  writeTable table filename
 
+  -- Testing something
+test1 = do
+    table <- readTable filename
+    return (Map.lookup (-2140639499) table)
 
-
-
-
--- While i < pwLength
---     answer = (hash mod nLetters) ++ answer
---     hash = hash / nLetters
---     i++
--- return answer
-    
-
--- 345298305   3
--- 69059661    0
--- 13811932    1
--- 2762386     2
--- 552477      1
--- 110495      2
--- 22099       0
--- 4419        4
+findPassword table width x = do
+    case x find table of
+        Just n  -> n 
+        Nothing -> Nothing
