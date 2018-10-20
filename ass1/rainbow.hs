@@ -7,12 +7,16 @@ rainbowTable :: Int -> [Passwd] -> Map.Map Hash Passwd
 generateHashList :: [Passwd] -> [[Hash]]
 getHashRow :: Int -> [Passwd] -> [Hash]
 generateTable :: IO ()
--- findPassword :: Foldable IO -> Int -> Int -> Maybe Int
+findPassword :: (Eq a) => Map.Map Hash a -> Int -> Hash -> Maybe a
+findPasswordHelper :: (Eq a) => Map.Map Hash a -> Int -> Hash -> Int -> Maybe a
+-- generateHashes :: Int -> Hash -> [Hash]
+nextRow :: Hash -> Hash
 test1 :: IO (Maybe Passwd)
 -- test2 :: Int -> IO ([Passwd], Int)
 main :: IO ()
 
 main = do
+  print "Test 1"
   generateTable
   res <- test1
   print res
@@ -41,12 +45,22 @@ generateTable = do
   writeTable table filename
 
 -- Password Finding
--- findPassword table width x = find (== x) table
+findPassword table w x = findPasswordHelper table w x 0
+
+findPasswordHelper table w x counter
+  | counter == w = Nothing
+  | Map.lookup x table == Nothing = findPasswordHelper table w (nextRow x) (counter + 1)
+  | otherwise = Map.lookup x table
+
+-- Finds the next row's hash value
+nextRow x = (pwHash . pwReduce) x
+
+-- generateHashes w x =  take w $ iterate nextRow x
 
   -- Testing 
 test1 = do
     table <- readTable filename
-    return (Map.lookup (-2140639499) table)
+    return (findPassword table 40 1726491528)
 
 -- test2 n = do
 --     table <- readTable filename
