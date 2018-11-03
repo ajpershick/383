@@ -1,0 +1,62 @@
+Language Description #1: C++
+
+Indicate which version of the language you're talking about: C++11, C++17 (or Java 9, 10 etc).
+    C++11
+
+Overall programming paradigm (imperative, functional, object oriented, logic programming, etc.)?
+    C++ is classified to many as a "general-purpose programming language"
+    which contains imperative, object-oriented, and generic programing features.
+
+Compiled, interpreted, bytecode compiled, JIT compiled (for the most common tools: either GCC or Clang)?
+    C++ is compiled most commonly with the GCC (g++) compiler which does not support JIT compilation. 
+    However, Clang does provide Just-in-time compilation as well as support for bytecode representation.
+
+Static or dynamic types. Static or dynamic binding?
+    C++ is statically typed, but has limited support for dynamic type casting through the dynamic_cast keyword.
+    Similarly for binding, C++ is mainly statically bound but can use dynamic binding using polymorphism.
+
+Strong or weak typing?
+    C++ is a fairly strongly typed language. It requires you to specify types of every variable you declare.
+
+Manual memory management or garbage collected (and garbage collection algorithm)?
+    C/C++ leaves all the memory management up to the programmer.
+
+Has first-class functions? Has closures?
+    C++ is able to pass functions as arguments to other functions (first-class) 
+    and has closure support called lambdas in C++11.
+
+What support for concurrent/parallel programming is available?
+    C++ utilizes forks/joins to run programs in parallel/concurrently.
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Language Description #2: Python
+
+Indicate which version of the language you're talking about: C++11, C++17 (or Java 9, 10 etc).
+    Python3.7
+
+Overall programming paradigm (imperative, functional, object oriented, logic programming, etc.).
+    Python includes imperative, object-oriented, functional and procedural paradigms.
+
+Compiled, interpreted, bytecode compiled, JIT compiled (for the most common tools: either GCC or Clang).
+    Python is an interpreted language.
+
+Static or dynamic types. Static or dynamic binding.
+    It features a dynamic typing system and also does not require to specify types (dynamically bound)
+
+Strong or weak typing.
+    Python is strongly typed even though the variables don't need to have declared types.
+    The variables' types don't randomly change.
+
+Manual memory management or garbage collected (and garbage collection algorithm).
+    Python has an automatic memory management system called the Python Memory Manager
+    which deals with dynamic storage management.
+
+Has first-class functions? Has closures?
+    First-class functions are implemented in Python, being able to pass a function into another function.
+    Python uses closures to add a form of abstraction to the code. 
+        It hides information about variable and reduces the use of global variables.
+
+What support for concurrent/parallel programming is available?
+    Python supports pooling with the multiprocessing module by creating a multithreaded environment.
+
