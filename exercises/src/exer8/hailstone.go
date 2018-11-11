@@ -8,3 +8,12 @@ func Hailstone(n uint) uint {
 		return 3*n + 1
 	}
 }
+
+func HailstoneSequenceAppend(n uint) []uint {
+	slice := []uint{n}
+	for n > 1 {
+		n = Hailstone(n)
+		slice = append(slice, n)
+	}
+	return slice
+}
