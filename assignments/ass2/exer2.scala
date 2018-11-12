@@ -7,15 +7,23 @@ object exer2 {
         def primes(n: Int): List[Int] =
             for (i <- List.range(2, n+1) if divisors(i).isEmpty) yield i
 
-        // def join(sep:String, list:List[String]): List[String] = 
-            // list.mkString(sep);
+        def join(sep:String, list:List[Any]): String = 
+            return list.mkString(sep)
         
-        println(divisors(10));
-        println(primes(100));
-        // val list = Array("apple", "banana", "cherry");
-        // val sep = ","
-        // println(join(sep, list));
+        // Testing divisors()
+        println(divisors(10))
 
+        // Testing primes()
+        println(primes(100))
+
+        // Testing join()
+        var list = List("apple", "banana", "cherry")
+        var sep = ","
+        println(join(sep, list))
+
+        list = List("1", "2", "3")
+        sep = "+"
+        println(join(sep, list))
     
    }
 }
