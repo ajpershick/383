@@ -11,7 +11,7 @@ object exer2 {
                 if divisors(i).isEmpty) 
                     yield i
 
-        def join(sep:String, list:List[Any]): String = 
+        def join(sep: String, list: List[Any]): String = 
             return list.mkString(sep)
 
         def pythagorean(n: Int): List[(Int, Int, Int)] =
