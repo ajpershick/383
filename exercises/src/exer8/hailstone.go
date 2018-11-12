@@ -17,3 +17,16 @@ func HailstoneSequenceAppend(n uint) []uint {
 	}
 	return slice
 }
+
+func HailstoneSequenceAllocate(n uint) []uint {
+	count := 1
+	for n > 1 {
+		n = Hailstone(n)
+		count++
+	}
+	sequence := make([]uint, count)
+	for n > 1 {
+		n = Hailstone(n)
+		sequence
+	}
+}
