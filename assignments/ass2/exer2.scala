@@ -1,5 +1,7 @@
-object exer2 {
-   def main(args: Array[String]) {
+object exer2 
+{
+   def main(args: Array[String]) 
+   {
 
         def divisors(n: Int): List[Int] =
             for (i <- List.range(2, (n/2) + 1) 

@@ -1,11 +1,10 @@
-object Demo1 {
-   def main(args: Array[String]) {
-      var myVar :Int = 10;
-      val myVal :String = "Hello Scala with datatype declaration.";
-      var myVar1 = 20;
-      val myVal1 = "Hello Scala new without datatype declaration.";
-      
-      println(myVar); println(myVal); println(myVar1); 
-      println(myVal1);
+// Counts the number of characters in a List/Sequence using foldl
+object Demo1 
+{
+   def main(args: Array[String]) 
+   {
+        val list = List("how many", "character are", "in", "this", "list?") 
+        val count = list.foldLeft(0) ((len, word) => len + word.length)
+        println(count)
    }
 }

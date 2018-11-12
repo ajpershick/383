@@ -2,8 +2,8 @@ import Array._
 
 object Demo8 {
    def main(args: Array[String]) {
-      var myList1 = range(10, 20, 2)
-      var myList2 = range(10,20)
+      var myList1 = range(0, 50, 5)
+      var myList2 = range(7, 21)
 
       // Print all the array elements
       for ( x <- myList1 ) {
