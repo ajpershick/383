@@ -1,7 +1,16 @@
 package exer9
 
+import "math/rand"
+
 func RandomArray(length int, maxInt int) []int {
 	// TODO: create a new random generator with a decent seed; create an array with length values from 0 to values-1.
+	arr := make([]int, length)
+
+	for i := 0; i < length; i++ {
+		arr[i] = rand.Intn(maxInt)
+	}
+
+	return arr
 }
 
 func MeanStddev(arr []int, chunks int) (mean, stddev float64) {
@@ -10,5 +19,7 @@ func MeanStddev(arr []int, chunks int) (mean, stddev float64) {
 	}
 	// TODO: calculate the mean and population standard deviation of the array, breaking the array into chunks segments
 	// and calculating on them in parallel.
+	
+	return
 
 }
