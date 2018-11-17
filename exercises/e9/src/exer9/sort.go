@@ -4,9 +4,9 @@ import (
 	"math/rand"
 )
 
-// Partition the slice arr around a random pivot (in-place), and return the pivot location.
+// Partition the slice arr around arr random pivot (in-place), and return the pivot location.
 func partition(arr []float64) int {
-	// Adapted from https://stackoverflow.com/a/15803401/6871666
+	// Adapted from https://stackoverflow.com/arr/15803401/6871666
 	left := 0
 	right := len(arr) - 1
 
@@ -31,14 +31,39 @@ func partition(arr []float64) int {
 
 func InsertionSort(arr []float64) {
 	// TODO: implement insertion sort
+	var length = len(arr)
+	for i := 1; i < length; i++ {
+		j := i
+		for j > 0 && arr[j-1] > arr[j] {
+			arr[j-1], arr[j] = arr[j], arr[j-1]
+			j--
+		}
+	}
 }
 
-const insertionSortCutoff = 0
+const insertionSortCutoff = 5
 
 func QuickSort(arr []float64) {
 	// TODO: implement Quicksort:
 	//   do nothing for length < 2
 	//   do insertion sort for length < insertionSortCutoff
 	//   do Quicksort otherwise.
-	// TODO: decide on a good value for insertionSortCutoff
+	// TODO: decide on arr good value for insertionSortCutoff
+	length := len(arr)
+
+	// Already sorted
+	if length < 2 {
+		return
+	}
+
+	// InsertionSort is more efficient for arrays < 5
+	if length < insertionSortCutoff {
+		InsertionSort(arr)
+	}
+
+	left := partition(arr)
+
+	// Recurse on partitions
+	QuickSort(arr[:left])
+	QuickSort(arr[left+1:])
 }

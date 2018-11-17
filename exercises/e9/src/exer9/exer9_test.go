@@ -1,7 +1,9 @@
 package exer9
 
 import (
+	"math/rand"
 	"reflect"
+	"sort"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -21,6 +23,22 @@ func TestRandomArrays(t *testing.T) {
 	arr2 := RandomArray(length, maxint)
 	assert.False(t, reflect.DeepEqual(arr1, arr2))
 }
+
+func TestScale(t *testing.T) {
+	p := Point{1, 2}
+	p.Scale(5)
+	assert.Equal(t, p, Point{5, 10})
+	p.Scale(0.5)
+	assert.Equal(t, p, Point{2.5, 5})
+}
+
+// func TestRotate(t *testing.T) {
+// 	p := Point{0, 1}
+// 	p.Rotate(math.Pi)
+// 	assert.Equal(t, Point{int(p.X), int(p.Y)}, Point{0, -1})
+// 	p.Rotate(math.Pi)
+// 	assert.Equal(t, p, Point{0, 1})
+// }
 
 // func TestArrayStatParallel(t *testing.T) {
 // 	length := 30000000
@@ -45,22 +63,24 @@ func TestRandomArrays(t *testing.T) {
 // 	assert.Equal(t, float32(stddev2), float32(stddev3))
 // }
 
-// func benchmarkSorting(b *testing.B, sort func(arr []float64)) {
-// 	const length = 1000
-// 	arr := make([]float64, length)
-// 	for i := 0; i < length; i++ {
-// 		arr[i] = float64(i)
-// 	}
+func benchmarkSorting(b *testing.B, sort func(arr []float64)) {
+	const length = 1000
+	arr := make([]float64, length)
+	for i := 0; i < length; i++ {
+		arr[i] = float64(i)
+	}
 
-// 	// run the benchmark
-// 	for n := 0; n < b.N; n++ {
-// 		rand.Shuffle(length, func(i, j int) {
-// 			arr[i], arr[j] = arr[j], arr[i]
-// 		})
-// 		sort(arr)
-// 	}
-// }
+	// run the benchmark
+	for n := 0; n < b.N; n++ {
+		rand.Shuffle(length, func(i, j int) {
+			arr[i], arr[j] = arr[j], arr[i]
+		})
+		sort(arr)
+	}
+}
 
-// func BenchmarkInsertionSort(b *testing.B) { benchmarkSorting(b, InsertionSort) }
-// func BenchmarkQuickSort(b *testing.B)     { benchmarkSorting(b, QuickSort) }
-// func BenchmarkFloat64s(b *testing.B)      { benchmarkSorting(b, sort.Float64s) }
+func BenchmarkInsertionSort(b *testing.B) { benchmarkSorting(b, InsertionSort) }
+
+func BenchmarkQuickSort(b *testing.B) { benchmarkSorting(b, QuickSort) }
+
+func BenchmarkFloat64s(b *testing.B) { benchmarkSorting(b, sort.Float64s) }

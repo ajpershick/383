@@ -2,6 +2,11 @@ package exer9
 
 import "math/rand"
 
+type Sums struct {
+	X float64
+	Y float64
+}
+
 func RandomArray(length int, maxInt int) []int {
 	// TODO: create a new random generator with a decent seed; create an array with length values from 0 to values-1.
 	arr := make([]int, length)
