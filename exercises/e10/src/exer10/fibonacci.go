@@ -1,18 +1,20 @@
 package exer10
 
-func fibConcurrent(n uint) uint {
-	return Fib(n-1, 2) + Fib(n-2, 2)
+func FibConcurrent(n uint, c chan uint) {
+	if n == 0 || n == 1 {
+		c <- 1
+	}
+	c <- n
+	FibConcurrent(n-1, c) + FibConcurrent(n-2, c)
 }
 
 func Fib(n uint, cutoff uint) uint {
-	if n < cutoff {
+	if n > cutoff {
 		// Do concurrency
+		c := make(chan uint)
+		go FibConcurrent(n, c)
 	} else {
-		if n == 0 || n == 1 {
-			return 1
-		} else {
-			return Fib(n-1, 2) + Fib(n-2, 2)
-		}
+
 	}
 }
 
