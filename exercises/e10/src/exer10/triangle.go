@@ -16,14 +16,30 @@ type Triangle struct {
 	A, B, C Point
 }
 
+type Transformable interface {
+	Scale(float64)
+	Rotate(float64)
+}
+
 func (t Triangle) String() string {
 	return fmt.Sprintf("[%s %s %s]", t.A, t.B, t.C)
 }
 
-func (t Triangle) Scale(f float64) {
+func (t *Triangle) Scale(f float64) {
 	t.A.Scale(f)
 	t.B.Scale(f)
 	t.C.Scale(f)
+}
+
+func (t *Triangle) Rotate(a float64) {
+	t.A.Rotate(a)
+	t.B.Rotate(a)
+	t.C.Rotate(a)
+}
+
+func TurnDouble(t Transformable, angle float64) {
+	t.Scale(2)
+	t.Rotate(angle)
 }
 
 // Point constructor
