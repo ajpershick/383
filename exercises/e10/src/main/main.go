@@ -2,8 +2,6 @@ package main
 
 import (
 	"exer10"
-	"fmt"
-	"math"
 )
 
 func main() {
@@ -22,10 +20,11 @@ func main() {
 	// t1.Rotate(math.Pi)
 	// println(int(t1.A.X))
 	// println(int(t1.A.Y)) // Rotated 360 degrees should be back to same values
-	pt := exer10.Point{3, 4}
-	exer10.TurnDouble(&pt, 3*math.Pi/2)
-	fmt.Println(pt)
-	tri := exer10.Triangle{exer10.Point{1, 2}, exer10.Point{-3, 4}, exer10.Point{5, -6}}
-	exer10.TurnDouble(&tri, math.Pi)
-	fmt.Println(tri)
+	// pt := exer10.Point{3, 4}
+	// exer10.TurnDouble(&pt, 3*math.Pi/2)
+	// fmt.Println(pt)
+	// tri := exer10.Triangle{exer10.Point{1, 2}, exer10.Point{-3, 4}, exer10.Point{5, -6}}
+	// exer10.TurnDouble(&tri, math.Pi)
+	// fmt.Println(tri)
+	exer10.DrawCircle(40, 20, "out.png")
 }
