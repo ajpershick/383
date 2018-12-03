@@ -6,6 +6,7 @@ import (
 
 type miningWorker struct {
 	// TODO. Should implement work_queue.Worker
+	
 }
 
 type MiningResult struct {

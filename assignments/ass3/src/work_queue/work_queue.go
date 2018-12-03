@@ -13,6 +13,12 @@ type WorkQueue struct {
 func Create(nWorkers uint, maxJobs uint) *WorkQueue {
 	q := new(WorkQueue)
 	// TODO: initialize struct; start nWorkers workers as goroutines
+	q.Jobs = make(chan Worker, maxJobs)
+	q.Results = make(chan interface{})
+
+	for i := 0; i < int(nWorkers); i++ {
+		go q.worker()
+	}
 	return q
 }
 
@@ -22,6 +28,12 @@ func (queue WorkQueue) worker() {
 	// TODO: run tasks by calling .Run(),
 	// TODO: send the return value back on Results channel.
 	// TODO: Exit (return) when .Jobs is closed.
+	select {
+	case x := <-queue.Jobs:
+		ret := x.Run()
+		queue.Results <- ret
+	}
+
 }
 
 func (queue WorkQueue) Enqueue(work Worker) {
