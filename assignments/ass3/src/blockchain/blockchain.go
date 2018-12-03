@@ -14,4 +14,5 @@ func (chain *Blockchain) Add(blk Block) {
 
 func (chain Blockchain) IsValid() bool {
 	// TODO
+	return true
 }

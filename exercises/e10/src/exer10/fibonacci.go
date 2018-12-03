@@ -9,15 +9,16 @@ package exer10
 // }
 
 // func Fib(n uint, cutoff uint) uint {
+// 	c := make(chan uint)
 // 	if n > cutoff {
 // 		// Do concurrency
-// 		c := make(chan uint)
-// 		go FibConcurrent(n, c)
+// 		// go FibConcurrent(n, c)
 // 	} else {
 
 // 	}
+// 	return 1
 // }
 
 // func Fibonacci(n uint) uint {
-// 	return Fib(n, 0)
+// 	return Fib(n, 30?)
 // }
