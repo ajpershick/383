@@ -6,7 +6,7 @@ import (
 
 type miningWorker struct {
 	// TODO. Should implement work_queue.Worker
-	
+	worker work_queue.Worker
 }
 
 type MiningResult struct {
@@ -19,6 +19,7 @@ type MiningResult struct {
 // is found.
 func (blk Block) MineRange(start uint64, end uint64, workers uint64, chunks uint64) MiningResult {
 	// TODO
+
 }
 
 // Call .MineRange with some reasonable values that will probably find a result.
@@ -32,3 +33,6 @@ func (blk *Block) Mine(workers uint64) bool {
 	return mr.Found
 }
 
+func (worker miningWorker) Run() interface{} {
+
+}
