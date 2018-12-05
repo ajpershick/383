@@ -18,9 +18,10 @@ func Create(nWorkers uint, maxJobs uint) *WorkQueue {
 	q := new(WorkQueue)
 	// TODO: initialize struct; start nWorkers workers as goroutines
 	q.Jobs = make(chan Worker, maxJobs)
-	q.Results = make(chan interface{})
+	q.Results = make(chan interface{}, maxJobs)
 
-	for i := 0; i < int(nWorkers); i++ {
+	for i := uint(0); i < nWorkers; i++ {
+		fmt.Printf("Worker %d has started listening...\n", i)
 		go q.worker()
 	}
 	return q
@@ -40,9 +41,9 @@ func (queue WorkQueue) worker() {
 				fmt.Printf("A result has appeared: %d\n", ret)
 				queue.Results <- ret
 			} else {
+				fmt.Printf("Channel closing...\n")
 				return
 			}
-
 		}
 	}
 }
